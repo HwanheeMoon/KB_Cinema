@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.movie_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.movie {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    flex: 0 1 auto; 
+}
+
+.movie img {
+    width: 100%;
+    height: auto;
+}
+
+.movie_details {
+    padding: 20px;
+}
+
+.movie_name {
+    font-size: 2.0em;
+    margin: 0 0 10px 0;
+}
+
+.movie_director,
+.movie_information,
+.movie_amount {
+    margin: 7px 0;
+}
