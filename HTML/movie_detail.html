@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화 상세 조회</title>
+    <link rel="stylesheet" href="../Css/detail_style.css">
+</head>
+
+<body>
+    <div class="main_dev">
+        <div class="left_dev">
+            <div id="movie_img"></div>
+            <div id="movie_name">영화 제목</div>
+            <div id="movie_eng_name">movie name</div>
+            <div id="movie_memo">
+                <div id="movie_director">감독 : </div>
+                <div id="movie_actor">배우 : </div>
+                <div id="movie_genre">장르 : </div>
+                <div id="movie_data">기본 정보 : </div>
+                <div id="movie_open">개봉일 : </div>
+            </div>
+            <div id="movie_summary">줄거리</div>
+        </div>
+        <div class="right_dev">
+            <h1>좌석 현황</h1>
+            <div class="seat_a">
+                <div id="a1"><button class="seat-button" id="A1">A1</button></div>
+                <div id="a2"><button class="seat-button" id="A2">A2</button></div>
+                <div id="a3"><button class="seat-button" id="A3">A3</button></div>
+                <div id="a4"><button class="seat-button" id="A4">A4</button></div>
+                <div id="a5"><button class="seat-button" id="A5">A5</button></div>
+            </div>
+            <div class="seat_b">
+                <div id="b1"><button class="seat-button" id="B1">B1</button></div>
+                <div id="b2"><button class="seat-button" id="B2">B2</button></div>
+                <div id="b3"><button class="seat-button" id="B3">B3</button></div>
+                <div id="b4"><button class="seat-button" id="B4">B4</button></div>
+                <div id="b5"><button class="seat-button" id="B5">B5</button></div>
+            </div>
+            <div class="seat_c">
+                <div id="c1"><button class="seat-button" id="C1">C1</button></div>
+                <div id="c2"><button class="seat-button" id="C2">C2</button></div>
+                <div id="c3"><button class="seat-button" id="C3">C3</button></div>
+                <div id="c4"><button class="seat-button" id="C4">C4</button></div>
+                <div id="c5"><button class="seat-button" id="C5">C5</button></div>
+            </div>
+            <div class="seat_d">
+                <div id="d1"><button class="seat-button" id="D1">D1</button></div>
+                <div id="d2"><button class="seat-button" id="D2">D2</button></div>
+                <div id="d3"><button class="seat-button" id="D3">D3</button></div>
+                <div id="d4"><button class="seat-button" id="D4">D4</button></div>
+                <div id="d5"><button class="seat-button" id="D5">D5</button></div>
+            </div>
+            <div class="right_bottom">
+                <div class="result">
+                    선택한 좌석: <span id="selected_seat"></span>
+                </div>
+
+
+                <input id="payBtn" type="button" value="결제하기" />
+                
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    
+    
+    let movies = [{
+        movie_id: 1,
+        movie_name: "극장판 하이큐!! 쓰레기장의 결전",
+        movie_eng_name: "The Dumpster Battle",
+        movie_director: "미츠나카 스스무",
+        movie_actor: "히나타 쇼우, 카게야마 토비오",
+        movie_genre: "애니메이션",
+        movie_data: "전체관람가, 85분, 일본",
+        movie_open: "2024.05.15",
+        movie_summary: "봄철 고교 배구대회 1회전과 2회전에서<br/>우승 후보를 차례로 꺾은 카라스노 고등학교는<br/>마침내 3회전에서 인연의 라이벌<br/>네코마 고등학교와 맞붙게 된다.<br/>공식 경기에서 처음으로 대결하는 두 고등학교,<br/>통칭 까마귀 VS 고양이 ‘쓰레기장의 결전’.<br/>약속의 땅에서 ‘한 번 더’가 없는 싸움이 드디어 시작된다!</div>",
+        movie_img: "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88214/88214_1000.jpg"
+    }, {
+        movie_id: 2,
+        movie_name: "범죄도시 4",
+        movie_eng_name: "THE ROUNDUP : PUNISHMENT",
+        movie_director: "허명행",
+        movie_actor: "마동석, 김무열, 이동휘, 박지환",
+        movie_genre: "액션, 범죄",
+        movie_data: "15세이상관람가, 109분, 한국",
+        movie_open: "2024.04.24",
+        movie_summary: "<div>신종 마약 사건 3년 뒤, <br/>괴물형사 ‘마석도‘(마동석)와 서울 광수대는<br/>배달앱을 이용한 마약 판매 사건을 수사하던 중<br/>수배 중인 앱 개발자가 필리핀에서 사망한 사건이<br/>대규모 온라인 불법 도박 조직과 연관되어 있음을 알아낸다.<br/>필리핀에 거점을 두고 납치, 감금, 폭행, 살인 등으로<br/>대한민국 온라인 불법 도박 시장을 장악한<br/>특수부대 용병 출신의 빌런 ‘백창기‘(김무열)와<br/>한국에서 더 큰 판을 짜고 있는 IT업계 천재 CEO ‘장동철‘(이동휘).<br/>‘마석도‘는 더 커진 판을 잡기 위해<br/>‘장이수’(박지환)에게 뜻밖의 협력을 제안하고<br/>광역수사대는 물론,<br/>사이버수사대까지 합류해 범죄를 소탕하기 시작하는데…<br/>나쁜 놈 잡는데 국경도 영역도 제한 없다!<br/>업그레이드 소탕 작전! 거침없이 싹 쓸어버린다!</div>",
+        movie_img: "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88104/88104_1000.jpg"
+    }, {
+        movie_id: 3,
+        movie_name: "그녀가 죽었다",
+        movie_eng_name: "Following",
+        movie_director: "김세휘",
+        movie_actor: "변요한, 신혜선, 이엘",
+        movie_genre: "미스터리, 스릴러",
+        movie_data: "15세이상관람가, 103분, 한국",
+        movie_open: "2024.05.15",
+        movie_summary: "<div>“나쁜 짓은 절대 안 해요. 그냥 보기만 하는 거예요.”<br/>고객이 맡긴 열쇠로 그 집에 들어가<br/>남의 삶을 훔쳐보는 취미를 지닌 공인중개사 ‘구정태’.<br/>편의점 소시지를 먹으며 비건 샐러드 사진을 포스팅하는<br/>SNS 인플루언서 ‘한소라’에게 흥미를 느끼고 관찰하기 시작한다.<br/>“관찰 152일째, 그녀가… 죽었습니다.”<br/>급기야 ‘한소라’의 집까지 드나들던 ‘구정태’는<br/>어느 날, 그녀가 소파에 죽은 채 늘어져 있는 모습을 발견하게 된다.<br/>그 후 그가 ‘한소라’ 집에 들어간 것을 알고 있는 누군가가 협박을 시작하고,<br/>사건을 맡은 강력반 형사 ‘오영주’의 수사망이 그를 향해 좁혀온다.<br/>스스로 범인을 찾아야 하는 ‘구정태’는 ‘한소라’의 SNS를 통해<br/>주변 인물들을 뒤지며 진범을 찾아 나서는데…</div>",
+        movie_img: "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88226/88226_1000.jpg"
+    }, ];
+    
+    let movie_name = null;
+    window.onload = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const movie_id = urlParams.get('id'); // 예: ?id=1
+        let movie_arr = movies[movie_id - 1];
+        document.getElementById("movie_img").innerHTML = `<img src="${movie_arr.movie_img}" width="200px" />`;
+        document.getElementById("movie_name").innerHTML = `${movie_arr.movie_name}`;
+        document.getElementById("movie_eng_name").innerHTML = `${movie_arr.movie_eng_name}`;
+        document.getElementById("movie_director").innerHTML = `감독 : ${movie_arr.movie_director}`;
+        document.getElementById("movie_actor").innerHTML = `배우 : ${movie_arr.movie_actor}`;
+        document.getElementById("movie_genre").innerHTML = `장르 : ${movie_arr.movie_genre}`;
+        document.getElementById("movie_data").innerHTML = `기본 정보 : ${movie_arr.movie_data}`;
+        document.getElementById("movie_open").innerHTML = `개봉일 : ${movie_arr.movie_open}`;
+        document.getElementById("movie_summary").innerHTML = `${movie_arr.movie_summary}`;
+        movie_name = movie_arr.movie_name;
+    }
+    let url = null;
+    document.addEventListener('DOMContentLoaded', function() {
+        let selected_seat = null;
+        const buttons = document.querySelectorAll('.seat-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                // 모든 버튼의 선택 효과 제거
+                buttons.forEach(btn => btn.classList.remove('selected-seat'));
+    
+                // 클릭한 버튼에 선택 효과 추가
+                this.classList.add('selected-seat');
+    
+                // 선택된 좌석 업데이트
+                selected_seat = this.id;
+                console.log(selected_seat);
+    
+                // 결과 표시 업데이트
+                document.getElementById('selected_seat').innerText = selected_seat;
+    
+                // 좌석 선택 후 URL 생성
+                const movie_amount = 12000;
+                const params = new URLSearchParams(window.location.search);
+                
+                const queryString = `movie_name=${movie_name}&movie_amount=${movie_amount}&selected_seat=${selected_seat}`;
+    
+                url = `../HTML/pay.html?${queryString}`;
+                
+            });
+        });
+    });
+        
+    document.getElementById("payBtn").addEventListener("click", function() {
+        console.log(url);
+        window.location.href = url;
+    });
+    
+    
+    
+</script>
