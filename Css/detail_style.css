@@ -51,3 +51,21 @@ body {}
     margin: 10px;
     padding: 15px;
 }
+
+.result {
+    display: flex;
+    padding: 25px;
+    margin: 20px 0;
+    font-size: 18px;
+    background-color: rgb(255, 230, 233);
+}
+
+#payBtn {
+    background-color: lightcoral;
+    padding: 10px 20px;
+    font-size: 24px;
+    color: rgb(43, 43, 43);
+    font-weight: bold;
+    float: right;
+    margin-top: 20px;
+}
