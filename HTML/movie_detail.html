@@ -55,7 +55,7 @@
             </div>
             <div class="right_bottom">
                 <div class="result">
-                    선택한 좌석: <span id="selected_seat"></span>
+                    선택한 좌석: <span id="selected_seat">없습니다.</span>
                 </div>
 
 
@@ -127,32 +127,39 @@
     let url = null;
     document.addEventListener('DOMContentLoaded', function() {
         let selected_seat = null;
+        const lst = [];
         const buttons = document.querySelectorAll('.seat-button');
         buttons.forEach(button => {
             button.addEventListener('click', function () {
                 // 모든 버튼의 선택 효과 제거
-                buttons.forEach(btn => btn.classList.remove('selected-seat'));
-    
-                // 클릭한 버튼에 선택 효과 추가
-                this.classList.add('selected-seat');
-    
-                // 선택된 좌석 업데이트
-                selected_seat = this.id;
-                console.log(selected_seat);
-    
-                // 결과 표시 업데이트
-                document.getElementById('selected_seat').innerText = selected_seat;
-    
-                // 좌석 선택 후 URL 생성
-                const movie_amount = 12000;
-                const params = new URLSearchParams(window.location.search);
-                
-                const queryString = `movie_name=${movie_name}&movie_amount=${movie_amount}&selected_seat=${selected_seat}`;
-    
-                url = `../HTML/pay.html?${queryString}`;
-                
+                //buttons.forEach(btn => btn.classList.remove('selected-seat'));
+                if (lst.indexOf(this.id) != -1) {
+                    alert("다른 자리를 선택하세요.");
+                } else {
+
+                    lst.push(this.id);
+                    
+                    // 클릭한 버튼에 선택 효과 추가
+                    this.classList.add('selected-seat');
+                    
+                    // 선택된 좌석 업데이트
+                    selected_seat = this.id;
+                    console.log(selected_seat);
+                    
+                    // 결과 표시 업데이트
+                    document.getElementById('selected_seat').innerText = lst.toString();
+                    
+                    // 좌석 선택 후 URL 생성
+                    const movie_amount = 12000 * lst.length;
+                    const params = new URLSearchParams(window.location.search);
+                    
+                    const queryString = `movie_name=${movie_name}&movie_amount=${movie_amount}&selected_seat=${lst.toString()}`;
+                    
+                    url = `../HTML/pay.html?${queryString}`;
+                }
+                    
+                });
             });
-        });
     });
         
     document.getElementById("payBtn").addEventListener("click", function() {
